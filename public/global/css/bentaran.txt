@@ -1,0 +1,51 @@
+<!-- <body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="/"><img src="/file/logo-circle.png" alt="">
+  </div>
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form action="" method="post">
+    @csrf
+    <div class="form-group has-feedback ">
+        <input type="text" class="form-control" name="username" placeholder="username">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+      <div class="form-group has-feedback ">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+      </div>
+    </form>
+    <br />
+    <i>Tampilan terbaik gunakan Google Chrome, Gunakan dengan baik dan benar</i>
+
+  </div>
+</div>
+
+<script src="/global/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/global/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/global/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%'
+    });
+  });
+</script>
+</body>
+</html> -->

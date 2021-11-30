@@ -1,0 +1,10 @@
+.login-logo a img {
+    width: 250px;
+}
+
+.login-page {
+    background-size: cover;
+    background: url("../../file/background_login.jpg");
+}
+
+    
