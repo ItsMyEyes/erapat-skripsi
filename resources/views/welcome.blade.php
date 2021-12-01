@@ -26,7 +26,7 @@
   <div class="left">
     <h5>Welcome to Sim-R</h5>
     <h1 class="title">{{ $about->judul }}</h1>
-    <p class="desc">{{ $about->description }}</p>
+    <p class="desc">{!! $about->description !!}</p>
     <button class="btn btn-primary" onclick="window.location.href='/login'">Get Started</button>
   </div>
   <img src="https://cdn3d.iconscout.com/3d/premium/thumb/startup-3025714-2526912.png" alt="">

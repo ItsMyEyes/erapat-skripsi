@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="">Description</label>
-            <textarea name="description" cols="30" rows="10" class="form-control">{!! $data->description !!}</textarea>
+            <textarea name="description" id="text-editor1"  cols="30" rows="10" class="form-control">{!! $data->description !!}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary btn-md">Edit</button>

@@ -11,6 +11,7 @@ class HasilRapatController extends Controller
     public function fetchAll()
     {
         $date = date('Y-m-d H:i:s');
+        $hasil = true;
         $now = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');;
         $z = listRapat::all();
         $ini['hasil'] = true;
@@ -32,7 +33,7 @@ class HasilRapatController extends Controller
         } else {
             $data = [];
         }
-        return view('admin.agenda.index',compact('data','ini'));
+        return view('admin.agenda.index',compact('data','ini','hasil'));
     }
 
     public function filterDate(Request $request)

@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('header','Rapat')
+@section('header', ($ini['hasil']) ? "Hasil Rapat" : "Rapat")
 @section('content')
 <div class="box-header with-border">
-        <h3 class="box-title">Data Rapat</h3>
+        <h3 class="box-title">Data {{ ($ini['hasil']) ? "Hasil" : "" }} Rapat</h3>
 </div>
 <!-- /.box-header -->
 <div class="box-body">
@@ -48,7 +48,7 @@
                         @if (!$v['hasil_rapat'] && !$ini['hasil'])
                             <a href="{{url()->full()}}/{{$v['id']}}/selesaikan" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
                             <a href="{{url()->full()}}/{{$v['id']}}/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="https://web.whatsapp.com/send?text=ini%20rapat" target="_blank" class="btn btn-warning btn-sm"><i class="fa fa-share-alt"></i></a>
+                            <a href="https://web.whatsapp.com/send?text=Undangan%20Rapat%20kangen%20kamu%20%0A%0ALokasi%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3A%20{{$v['nama_tempat']}}%0AMulai%20-%20Selesai%20%3A%20{{$v['start']}}%20-%20{{$v['selesai']}}%0A%0AUntuk%20lebih%20lanjutnya%20silahkan%20kunjungi%20website%20berikut.%20https%3A%2F%2Fsim-r.xyz" target="_blank" class="btn btn-warning btn-sm"><i class="fa fa-share-alt"></i></a>
                             <span data-url="{{url()->full()}}/{{$v['id']}}" data-id="{{$v['id']}}" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i></span>
                         @elseif($v['hasil_rapat'] && $ini['hasil'])
                             <a href="/agendas/{{$v['id']}}/detail" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
