@@ -118,7 +118,7 @@ class HasilRapatController extends Controller
            foreach($request->file('files') as $key => $file)
            {
                 $nama_filez = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
-                $file->move(base_path('/public/images/'),$nama_filez);
+                $file->move('/home/simrxyz/public_html/images/',$nama_filez);
                 $path =  "/images/".md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
 
                 \App\Models\dokumentasi::create([

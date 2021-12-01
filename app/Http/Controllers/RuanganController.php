@@ -52,7 +52,7 @@ class RuanganController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $nama_filez = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
-            $file->move(base_path('/public/images/'),$nama_filez);
+            $file->move('/home/simrxyz/public_html/images/',$nama_filez);
             $path =  "/images/".md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
         }
 
@@ -110,7 +110,7 @@ class RuanganController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $nama_filez = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
-            $file->move(base_path('/public/images/'),$nama_filez);
+            $file->move('/home/simrxyz/public_html/images/',$nama_filez);
             $path =  "/images/".md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
         }
 
