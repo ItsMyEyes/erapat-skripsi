@@ -12,6 +12,7 @@
                 <th>No.</th>
                 <th>Nama</th>
                 <th>Hadir / Tidak Hadir</th>
+                <th>Photo</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
                 <td>{{ $no++ }}</td>
                 <td>{{ $d->detail->name }}</td>
                 <td>{{ $d->kehadiran == 0 ? "Tidak Hadir" : "Hadir" }}</td>
+                <td><img src="{{ $d->url }}" height="50" width="80" alt=""></td>
             </tr>
             @endforeach
         </tbody>

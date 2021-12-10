@@ -99,7 +99,7 @@ class ListRapatController extends Controller
         $ruanganList =  \App\Models\listRapat::where('ruangan', $request->ruangan)->where('diselesaikan','nope')->get();
         $error = [];
         if (isset($request->selesai) && !is_null($request->selesai)) {
-            if (strtotime($request->start) >= strtotime($request->selesai)) {
+            if (strtotime($request->start) < strtotime($request->selesai)) {
                 $error[] = true;
             }
         }

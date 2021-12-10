@@ -19,6 +19,9 @@
   <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+  <style>
+      .modal { visibility: hidden; opacity: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; background: rgba(77, 77, 77, .7); transition: all .4s; } .modal:target { visibility: visible; opacity: 1; } .modal__content { border-radius: 4px; position: relative; width: 500px; max-width: 90%; background: #fff; padding: 1em 2em; } .modal__footer { text-align: right; a { color: #585858; } i { color: #d02d2c; } } .modal__close { position: absolute; top: 10px; right: 10px; color: #585858; text-decoration: none; }
+  </style>
 </head>
 
 <body class="">
@@ -54,7 +57,7 @@
                     @elseif ($hadir && isset($rapatSelf->hasilRapat) && !is_null($rapatSelf->hasilRapat))
                       <a href="/notulen/{{ urlencode($kampret) }}/rapat" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark"><i class="fa fa-edit" style="font-size: 13px;"></i> Check Hasil Rapat</a>
                     @else
-                      <a href="/absen/{{ urlencode($kampret) }}/rapat" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Absen</a>
+                      <a href="#demo-modal" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Absen</a>
                     @endif
                   </li>
                 </ul>
@@ -74,6 +77,25 @@
         </div>
     </div>
   </main>
+
+  <div id="demo-modal" class="modal">
+    <div class="modal__content">
+        <h4>CSS Only Modal</h4>
+
+        <form action="/absen/{{ urlencode($kampret) }}/rapat" method="post" enctype="multipart/form-data">
+          @csrf
+          <p>
+            <input type="file" name="file" id="" class="form-control">
+          </p>
+
+          <div class="modal__footer">
+              <button type="submit" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Absen Sekarang</button>
+          </div>
+        </form>
+
+        <a href="#" class="modal__close">&times;</a>
+    </div>
+</div>
   <!--   Core JS Files   -->
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap.min.js"></script>

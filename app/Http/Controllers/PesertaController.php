@@ -58,22 +58,31 @@ class PesertaController extends Controller
         return view('pesertaDetail',compact('rapatSelf','kampret','hadir'));
     }
 
-    public function hadir($id)
+    public function hadir(Request $request, $id)
     {
         $id = urlencode(base64_decode(base64_decode($id)));
         $rapatSelf = \App\Models\listRapat::whereHas('peserta', function ($q)
         {
             $q->where('id_peserta', auth()->user()->id);
         })->where('id',$id)->first();
+        $path = "/no-image.jpg";
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $nama_filez = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
+            $file->move('/home/simrxyz/public_html/images/',$nama_filez);
+            $path =  "/images/".md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
+        }
         if (isset($rapatSelf) && !is_null($rapatSelf)) {
             \App\Models\listPeserta::where('id_rapat',$id)->where('id_peserta',auth()->user()->id)->update([
-                'kehadiran' => '1'
+                'kehadiran' => '1',
+                'url' => $path
             ]);
         } else {
             \App\Models\listPeserta::updateorCreate([
                 'id_rapat' => $id,
                 'id_peserta' => auth()->user()->id,
-                'kehadiran' => '1'
+                'kehadiran' => '1',
+                'url' => $path
             ]);
         }
         \Session::flash('success','Success Absen');

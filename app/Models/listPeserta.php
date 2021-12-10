@@ -9,7 +9,7 @@ class listPeserta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_rapat','id_peserta','kehadiran'];
+    protected $fillable = ['id_rapat','id_peserta','kehadiran','url'];
 
     public function detail()
     {

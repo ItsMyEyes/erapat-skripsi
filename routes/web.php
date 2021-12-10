@@ -46,6 +46,6 @@ Route::middleware(['auth','admin'])->group(function () {
 Route::get('/hasils',[\App\Http\Controllers\PesertaController::class, 'hasilRapat']);
 Route::get('/peserta',[\App\Http\Controllers\PesertaController::class, 'index']);
 Route::get('/detail/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'detail']);
-Route::get('/absen/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'hadir']);
+Route::post('/absen/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'hadir']);
 Route::get('/notulen/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'notulen']);
 Route::get('/cetak/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'cetak']);

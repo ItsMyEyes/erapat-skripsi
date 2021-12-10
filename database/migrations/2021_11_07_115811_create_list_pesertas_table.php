@@ -18,6 +18,7 @@ class CreateListPesertasTable extends Migration
             $table->integer('id_rapat');
             $table->integer('id_peserta');
             $table->integer('kehadiran')->default(0);
+            $table->string('url');
             $table->timestamps();
         });
     }
