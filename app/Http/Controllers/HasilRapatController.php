@@ -197,4 +197,41 @@ class HasilRapatController extends Controller
     {
         //
     }
+
+    public function rekap(Request $request) {
+        $type = $request->type;
+        $from = $request->from;
+        $to = $request->to;
+        $jangka_waktu = $request->jangka_waktu;
+        $status = $request->selesai ?: 0;
+        $cetak = $request->cetak ?: false;
+
+        $data = Array();
+        $z = [];
+        if (!empty($type)) {
+            if ($status == 1) {
+                $z = listRapat::where('type_rapat', $type)->whereBetween('start', [$from, $to])->where('jangka_waktu', $jangka_waktu)->where('diselesaikan','!=','nope')->get();
+            } else {
+                $z = listRapat::where('type_rapat', $type)->whereBetween('start', [$from, $to])->where('jangka_waktu', $jangka_waktu)->where('diselesaikan','nope')->get();
+            }   
+        }
+        if (count($z) > 0) {
+            foreach ($z as $key => $value) {
+                $data[$key]['id'] = $value->id;
+                $data[$key]['nama'] = $value->judul;
+                $data[$key]['desc'] = $value->desc;
+                $data[$key]['start'] = date("d-m-Y H:i:s", strtotime($value->start));
+                $data[$key]['selesai'] = $value->selesai == "nope" ? "belum selesai" : date("d-m-Y H:i:s", strtotime($value->selesai));
+                $data[$key]['jumlah_peserta'] = $value->peserta->count();
+                $data[$key]['nama_tempat'] = (isset($value->ruanganDetail) && !is_null($value->ruanganDetail)) ? $value->ruanganDetail->nama_ruangan : $value->link_rapat;
+                $data[$key]['hasil_rapat'] = (isset($value->hasilRapat) && !is_null($value->hasilRapat)) ? true : false;
+            }
+        }
+        
+        if ($cetak) {
+            return view('admin.cetak', compact('type','from','to','jangka_waktu','status','data'));
+        } else {
+            return view('admin.rekap', compact('type','from','to','jangka_waktu','status','data'));
+        }
+    }
 }

@@ -49,3 +49,6 @@ Route::get('/detail/{id}/rapat',[\App\Http\Controllers\PesertaController::class,
 Route::post('/absen/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'hadir']);
 Route::get('/notulen/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'notulen']);
 Route::get('/cetak/{id}/rapat',[\App\Http\Controllers\PesertaController::class, 'cetak']);
+
+
+Route::get('dokumentasi', [\App\Http\Controllers\HasilRapatController::class, 'rekap']);

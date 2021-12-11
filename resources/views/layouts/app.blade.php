@@ -152,7 +152,7 @@
         @endif
         <li class="header">Tools</li>
         <li>
-          <a href="/file/dokumentasi.pdf">
+          <a href="/dokumentasi">
             <i class="fa fa-file"></i> <span>DOKUMENTASI</span>
           </a>
         </li>
